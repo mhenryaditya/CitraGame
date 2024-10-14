@@ -34,10 +34,10 @@ import { inject, ref, watch, type Ref } from 'vue';
 const level: Ref<number> = inject('level')!
 const timeValue: Ref<number> = ref(15)
 const widthValue: Ref<number> = inject('widthValue')!
-const counter: Ref<number> = inject('counter')!
+const counter: any = inject('counter')!
 const que_count: Ref<number> = inject('que_count')!
 const que_numb: Ref<number> = inject('que_numb')!
-const counterLine: Ref<number> = inject('counterLine')!
+const counterLine: any = inject('counterLine')!
 const userScore: Ref<number> = inject('userScoreTemp')!
 const isQuiz: Ref<boolean> = inject('isQuiz')!
 const attempt: Ref<number> = inject('attempt')!
@@ -89,7 +89,7 @@ const startTimer = (time: number, questions: any[]) => {
     const tickIconTag = '<div class="icon tick"><i class="fas fa-check"></i></div>';
     const next_btn = document.querySelector("footer .next_btn")!;
 
-    counter.value = setInterval(() => timer, 1000);
+    counter.value = setInterval(timer, 1000);
     function timer() {
         timeCount.textContent = time + ''; //changing the value of timeCount with time value
         time--; //decrement the time value
@@ -119,7 +119,7 @@ const startTimer = (time: number, questions: any[]) => {
 
 const startTimerLine = (time: number) => {
     const time_line = document.getElementById("time_line")!;
-    counterLine.value = setInterval(() => timer, 29);
+    counterLine.value = setInterval(timer, 29);
     function timer() {
         time += 1; //upgrading time value with 1
         time_line.style.width = time + "px"; //increasing width of time_line with px by time value
