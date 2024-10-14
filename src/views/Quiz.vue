@@ -48,7 +48,7 @@ watch(() => isQuiz.value, (val) => {
         showQuetions(0, (level.value == 1) ? questions1 : questions2); //calling showQestions function
         queCounter(1, (level.value == 1) ? questions1 : questions2); //passing 1 parameter to queCounter
         startTimer(15, (level.value == 1) ? questions1 : questions2); //calling startTimer function
-        startTimerLine(0); //calling startTimerLine function
+        startTimerLine(0); //calling startTimerLine f unction
     }
 })
 
