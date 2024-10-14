@@ -6,7 +6,7 @@
                 <div class="time_left_txt">Time Left</div>
                 <div class="timer_sec">15</div>
             </div>
-            <div class="time_line"></div>
+            <div class="time_line" id="time_line"></div>
         </header>
         <section>
             <div class="que_text">
@@ -118,7 +118,7 @@ const startTimer = (time: number, questions: any[]) => {
 }
 
 const startTimerLine = (time: number) => {
-    const time_line = document.querySelector("header .time_line")!;
+    const time_line = document.getElementById("time_line")!;
     counterLine.value = setInterval(timer, 29);
     function timer() {
         time += 1; //upgrading time value with 1
