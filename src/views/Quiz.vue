@@ -60,7 +60,7 @@ const showQuetions = async (index: number, questions: any[]) => {
 
     //creating a new span and div tag for question and option and passing the value using array index
     // let image
-    const tag1 = `<img src="${questions[index].image}">`
+    const tag1 = `<img class="img-thumbnail image-fluid" src="${questions[index].image}">`
     const answer = questions[que_count.value].answer;
     const { tag2, tag3 } = await url(answer, questions[index].image)
     const que_tag = '<div class="d-flex flex-column gap-2"><span>' + questions[index].numb + ". " + questions[index].question + '</span><div class="align-self-center d-flex gap-2">' + tag1 + '' + tag2 + '' + (tag3 ?? '') + '</div></div>';
@@ -228,8 +228,8 @@ const url = async (typeData: string, path: string) => {
         tag3 = await processCitra(proses[1], path)
     }
     return {
-        tag2: `<img src="${tag2}">`,
-        tag3: `<img src="${tag3}">`
+        tag2: `<img class="img-thumbnail image-fluid" src="${tag2}">`,
+        tag3: `<img class="img-thumbnail image-fluid" src="${tag3}">`
     }
 }
 
