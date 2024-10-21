@@ -29,6 +29,7 @@
 <script setup lang="ts">
 import questions1 from '@/data/questions1';
 import questions2 from '@/data/questions2';
+import { Jimp } from 'jimp';
 import { inject, ref, watch, type Ref } from 'vue';
 
 const level: Ref<number> = inject('level')!
@@ -53,19 +54,16 @@ watch(() => isQuiz.value, (val) => {
 })
 
 // getting questions and options from array
-const showQuetions = (index: number, questions: any[]) => {
+const showQuetions = async (index: number, questions: any[]) => {
     const que_text = document.querySelector(".que_text")!;
     const option_list = document.querySelector(".option_list")!;
 
-
     //creating a new span and div tag for question and option and passing the value using array index
     // let image
-    const tag1 =`<img src="${questions[index].image}">`
-    let tag2 =""
-    let tag3 =""
+    const tag1 = `<img src="${questions[index].image}">`
     const answer = questions[que_count.value].answer;
-    const { tag2, tag3 } = await url(answer,questions[index].image)
-    const que_tag = '<div class="d-flex flex-column gap-2"><span>' + questions[index].numb + ". " + questions[index].question + '</span><div class="align-self-center d-flex gap-2">' + tag1 +''+ tag2 + ''+ (tag3??'')+ '</div></div>';
+    const { tag2, tag3 } = await url(answer, questions[index].image)
+    const que_tag = '<div class="d-flex flex-column gap-2"><span>' + questions[index].numb + ". " + questions[index].question + '</span><div class="align-self-center d-flex gap-2">' + tag1 + '' + tag2 + '' + (tag3 ?? '') + '</div></div>';
     const option_tag = '<div class="option"><span>' + questions[index].options[0] + '</span></div>'
         + '<div class="option"><span>' + questions[index].options[1] + '</span></div>'
         + '<div class="option"><span>' + questions[index].options[2] + '</span></div>'
@@ -211,32 +209,33 @@ function showResult() {
 
 }
 
-export function createImgUrl(pct: File): string {
-  return URL.createObjectURL(pct)
+function createImgUrl(pct: File): string {
+    return URL.createObjectURL(pct)
 }
 
-export function bufferImgUrl(buffer: any, fileName: string, mimeType: string): any {
-  const blob = new Blob([buffer], { type: mimeType })
-  const file = new File([blob], fileName, { type: mimeType })
-  return createImgUrl(file)
+function bufferImgUrl(buffer: any, fileName: string, mimeType: string): any {
+    const blob = new Blob([buffer], { type: mimeType })
+    const file = new File([blob], fileName, { type: mimeType })
+    return createImgUrl(file)
 }
 
 const url = async (typeData: string, path: string) => {
-    let proses = typeData.split('->')
-    let tag2 = "",tag3 = ""
+    const proses = typeData.split('->')
+    let tag2 = ""
+    let tag3 = ""
     tag2 = await processCitra(proses[0], path)
     if (proses.length > 1) {
         tag3 = await processCitra(proses[1], path)
     }
-    return{
+    return {
         tag2: `<img src="${tag2}">`,
-        tag3: `<img src="${tag2}">`
+        tag3: `<img src="${tag3}">`
     }
 }
 
 
 const processCitra = async (tipe: string, path: string) => {
-    let image = await Jimp.read(path);
+    const image = await Jimp.read(path);
     switch (tipe) {
         case 'Thresholding':
             image.threshold({ max: 50 });
@@ -251,7 +250,7 @@ const processCitra = async (tipe: string, path: string) => {
             image.brightness(0.5);
             break;
     }
-    return bufferImgUrl((await image.getBuffer('image/jpg' as string)).buffer, `jpg.jpg`, 'image/jpg')
+    return bufferImgUrl((await image.getBuffer('image/jpeg')).buffer, `jpg.jpeg`, 'image/jpeg')
 }
 
 </script>
