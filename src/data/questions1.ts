@@ -25,7 +25,7 @@ export default [
   },
 
   {
-    numb: 3,
+    numb: 4,
     image: './img/4.jpg',
     question: 'Operasi citra apa yang berlaku pada gambar tersebut?',
     answer: 'Brightness',
