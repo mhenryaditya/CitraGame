@@ -226,7 +226,7 @@ const url = async (typeData: string, path: string) => {
     let tag3 = ""
     tag2 = await processCitra(proses[0], path)
     if (proses.length > 1) {
-        tag3 = await processCitra(proses[1], path)
+        tag3 = await processCitra(proses[1], tag2)
     }
     return {
         tag2: `<img class="img-fluid flex-grow-1 img-thumbnail" style="width: 50px;" src="${tag2}">`,
