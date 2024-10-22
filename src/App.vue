@@ -66,6 +66,10 @@ body {
   transform: translate(-50%, -50%) scale(1);
 }
 
+.que_text div div img {
+  max-width: 50%;
+}
+
 /* .start_btn button{
     font-size: 25px;
     font-weight: 500;
@@ -145,6 +149,7 @@ body {
   opacity: 0;
   pointer-events: none;
   transition: all 0.3s ease;
+  overflow: hidden;
 }
 
 .quiz_box header {
@@ -212,7 +217,7 @@ section {
 }
 
 section .que_text {
-  font-size: 25px;
+  font-size: 16pt;
   font-weight: 600;
 }
 

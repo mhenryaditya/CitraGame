@@ -1,5 +1,5 @@
 <template>
-    <div class="quiz_box mt-5 mb-5">
+    <div class="quiz_box">
         <header>
             <div class="title">CitraGame</div>
             <div class="timer">
@@ -60,10 +60,11 @@ const showQuetions = async (index: number, questions: any[]) => {
 
     //creating a new span and div tag for question and option and passing the value using array index
     // let image
-    const tag1 = `<img class="img-thumbnail image-fluid" src="${questions[index].image}">`
+    const tag1 = `<img class="img-fluid flex-grow-1 img-thumbnail" style="width: 50px;" src="${questions[index].image}">`
     const answer = questions[que_count.value].answer;
     const { tag2, tag3 } = await url(answer, questions[index].image)
-    const que_tag = '<div class="d-flex flex-column gap-2"><span>' + questions[index].numb + ". " + questions[index].question + '</span><div class="align-self-center d-flex gap-2">' + tag1 + '' + tag2 + '' + (tag3 ?? '') + '</div></div>';
+    // const que_tag = '<div class="d-flex flex-column gap-2"><span>' + questions[index].numb + ". " + questions[index].question + '</span><div class="align-self-center d-flex gap-2">' + tag1 + '' + tag2 + '' + ((tag3.split('src=')[1].length > 3) ? tag3 : '') + '</div></div>';
+    const que_tag = '<div class="d-flex flex-column gap-2"><span>' + questions[index].numb + ". " + questions[index].question + '</span><div class="d-flex gap-3">' + tag1 + '' + tag2 + '' + ((tag3.split('src=')[1].length > 3) ? tag3 : '') + '</div></div>';
     const option_tag = '<div class="option"><span>' + questions[index].options[0] + '</span></div>'
         + '<div class="option"><span>' + questions[index].options[1] + '</span></div>'
         + '<div class="option"><span>' + questions[index].options[2] + '</span></div>'
@@ -228,8 +229,8 @@ const url = async (typeData: string, path: string) => {
         tag3 = await processCitra(proses[1], path)
     }
     return {
-        tag2: `<img class="img-thumbnail image-fluid" src="${tag2}">`,
-        tag3: `<img class="img-thumbnail image-fluid" src="${tag3}">`
+        tag2: `<img class="img-fluid flex-grow-1 img-thumbnail" style="width: 50px;" src="${tag2}">`,
+        tag3: `<img class="img-fluid flex-grow-1 img-thumbnail" style="width: 50px;" src="${tag3}">`
     }
 }
 

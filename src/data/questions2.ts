@@ -7,7 +7,7 @@ export default [
       'Operasi citra apa yang berlaku dari gambar paling kiri ke paling kanan?',
     answer: 'Brightness->Thresholding',
     options: [
-      'Thresholding->Brightness',
+      'Darkness->Brightness',
       'Grayscale->Darkness',
       'Brightness->Thresholding',
       'Darkness->Grayscale',
@@ -17,10 +17,11 @@ export default [
   {
     numb: 2,
     image: './img/2.jpg',
-    question: 'Operasi citra apa yang berlaku pada gambar tersebut?',
-    answer: 'Thresholding->Brightness',
+    question:
+      'Operasi citra apa yang berlaku dari gambar paling kiri ke paling kanan?',
+    answer: 'Darkness->Brightness',
     options: [
-      'Thresholding->Brightness',
+      'Darkness->Brightness',
       'Grayscale->Darkness',
       'Brightness->Thresholding',
       'Darkness->Grayscale',
@@ -30,10 +31,11 @@ export default [
   {
     numb: 3,
     image: './img/3.jpeg',
-    question: 'Operasi citra apa yang berlaku pada gambar tersebut?',
+    question:
+      'Operasi citra apa yang berlaku dari gambar paling kiri ke paling kanan?',
     answer: 'Grayscale->Darkness',
     options: [
-      'Thresholding->Brightness',
+      'Darkness->Brightness',
       'Grayscale->Darkness',
       'Brightness->Thresholding',
       'Darkness->Grayscale',
@@ -41,12 +43,13 @@ export default [
   },
 
   {
-    numb: 3,
-    image: './img/3.jpeg',
-    question: 'Operasi citra apa yang berlaku pada gambar tersebut?',
+    numb: 4,
+    image: './img/4.jpg',
+    question:
+      'Operasi citra apa yang berlaku dari gambar paling kiri ke paling kanan?',
     answer: 'Darkness->Grayscale',
     options: [
-      'Thresholding->Brightness',
+      'Darkness->Brightness',
       'Grayscale->Darkness',
       'Brightness->Thresholding',
       'Darkness->Grayscale',
