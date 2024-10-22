@@ -30,7 +30,7 @@ export default [
 
   {
     numb: 3,
-    image: './img/3.jpeg',
+    image: './img/3.jpg',
     question:
       'Operasi citra apa yang berlaku dari gambar paling kiri ke paling kanan?',
     answer: 'Grayscale->Darkness',

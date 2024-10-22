@@ -18,7 +18,7 @@ export default [
 
   {
     numb: 3,
-    image: './img/3.jpeg',
+    image: './img/3.jpg',
     question: 'Operasi citra apa yang berlaku pada gambar tersebut?',
     answer: 'Grayscale',
     options: ['Thresholding', 'Grayscale', 'Brightness', 'Darkness'],
